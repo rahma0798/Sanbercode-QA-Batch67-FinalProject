@@ -1,0 +1,27 @@
+{
+  "name": "sanbercode-qa-batch67-finalproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahma0798/Sanbercode-QA-Batch67-FinalProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rahma0798/Sanbercode-QA-Batch67-FinalProject/issues"
+  },
+  "homepage": "https://github.com/rahma0798/Sanbercode-QA-Batch67-FinalProject#readme",
+  "devDependencies": {
+    "cypress": "^14.5.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-xpath": "^2.0.1",
+    "@faker-js/faker": "^8.4.1"
+  }
+}
