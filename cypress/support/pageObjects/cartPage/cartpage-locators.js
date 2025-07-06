@@ -1,5 +1,5 @@
 module.exports = {
-    product_card: '.card-title',
+    product_link: 'a[href="prod.html?idp_=2"]',
     button_addtocart: '.btn-success',
     product_header: 'h2',
     button_order: '//button[contains(text(), "Place Order")]',

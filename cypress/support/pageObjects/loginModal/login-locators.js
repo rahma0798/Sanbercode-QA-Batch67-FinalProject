@@ -3,5 +3,4 @@ module.exports = {
     input_username_field: '#loginusername',
     input_password_field: '#loginpassword',
     button_login: '//button[contains(text(), "Log in")]',
-    login_user: '#nameofuser'
 }

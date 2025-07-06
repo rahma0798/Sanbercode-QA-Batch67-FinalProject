@@ -2,7 +2,7 @@ const locators = require('./homepage-locators')
 
 class homePage {
     goToHomePage() {
-        cy.visit('https://www.demoblaze.com/index.html', { timeout: 30000 });
+        cy.visit('https://www.demoblaze.com/index.html', { timeout: 60000 });
     }
 
     clickSingUpMenu() {
@@ -10,8 +10,13 @@ class homePage {
     }
 
     clickLoginMenu() {
-        cy.get(locators.menu_login, { timeout: 10000 }).should('be.visible').click();
+        cy.get(locators.menu_login).should('be.visible').click();
     }
+
+    assertLoginSuccess(user) {
+         cy.get(locators.login_user).should('contain', `Welcome ${user}`);
+         cy.wait(1000);
+     }
 
     clickCartMenu() {
         cy.get(locators.menu_cart).should('be.visible').click();

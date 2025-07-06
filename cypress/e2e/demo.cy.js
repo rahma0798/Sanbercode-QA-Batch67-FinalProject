@@ -1,28 +1,39 @@
 const homePage = require('../support/pageObjects/homePage/homePage');
+const signupModal = require('../support/pageObjects/signupModal/signupModal');
 const loginModal = require('../support/pageObjects/loginModal/loginModal');
 const cartPage = require('../support/pageObjects/cartPage/cartPage');
-const user = require('../fixtures/userData.json');
-const { faker } = require('@faker-js/faker');
+const { faker } = require('@faker-js/faker')
 
-describe('Checkout Feature', () => {
-  before(() => {
-    cy.fixture('userData.json').then(({ user, password }) => {
+const user = faker.internet.userName().toLowerCase();
+const password = faker.internet.password();
+
+describe('demoblaze cypress test is success', () => {
+
+beforeEach(() => {
+    homePage.goToHomePage();
+});
+
+
+  it('should sign up new user', () => {
+      homePage.clickSingUpMenu();
+      signupModal.signupForm(user,password);
+
+  })
+
+  it('should login as the signed up user', () => {
       homePage.clickLoginMenu();
-      loginModal.verifyLoginModalAppears();
-      loginModal.inputUsername(user);
-      loginModal.inputPassword(password);
-      loginModal.clickLoginButton();
-      loginModal.assertLoginSuccess(user);
-    });
+      loginModal.loginForm(user,password);
+      cy.wait(2000);
+      homePage.assertLoginSuccess(user);
   });
 
   it('should add product to cart and complete purchase', () => {
-    cartPage.addProductToCart('Nokia lumia 1520', { timeout: 20000 });
+    cartPage.addProductToCart();
     homePage.clickCartMenu();
     cartPage.goToCartPage();
     cartPage.clickPlaceOrderButton();
 
-    cartPage.fillOrderForm({
+    cartPage.placeOrderForm({
       name: faker.person.fullName(),
       country: faker.location.country(),
       city: faker.location.city(),
@@ -31,7 +42,8 @@ describe('Checkout Feature', () => {
       year: faker.date.future().getFullYear(),
     });
 
-    cartPage.clickPurchaseButton();
     cartPage.assertPurchaseSuccess();
   });
-});
+
+  
+})
